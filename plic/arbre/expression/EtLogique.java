@@ -17,4 +17,16 @@ public class EtLogique extends BinaireLogique {
         return " et " ;
     }
 
+	@Override
+	public String toMIPS() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void verifier() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -17,4 +17,26 @@ public class Plus extends BinaireArithmetique {
         return " + " ;
     }
 
+	@Override
+	public String toMIPS() {
+		/* String res = "li $v0, "+ gauche+
+						"sw v0, 0($sp) "+
+						"add $sp, $sp-4 "+
+						"add $sp, $sp+4 "+
+						""; */
+		return null;
+	}
+
+	@Override
+	public void verifier() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getType() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
