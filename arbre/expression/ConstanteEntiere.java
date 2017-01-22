@@ -12,4 +12,20 @@ public class ConstanteEntiere extends Constante {
         super(texte, n) ;
     }
 
+	@Override
+	public void verifier() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String toMIPS() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getType() {
+		return ENTIER;
+	}
+
 }

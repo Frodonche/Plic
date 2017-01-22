@@ -16,5 +16,21 @@ public class Div extends BinaireArithmetique {
     public String operateur() {
         return " / ";
     }
+
+	@Override
+	public void verifier() {
+		
+	}
+
+	@Override
+	public String toMIPS() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getType() {
+		return ENTIER;
+	}
     
 }

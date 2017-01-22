@@ -23,5 +23,6 @@ public abstract class Binaire extends Expression {
     public String toString() {
         return "(" + gauche + operateur() + droite + ")" ;
     }
+ 
 
 }

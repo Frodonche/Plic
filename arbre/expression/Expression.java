@@ -9,9 +9,13 @@ import plic.arbre.ArbreAbstrait;
  */
 
 public abstract class Expression extends ArbreAbstrait {
-    
+    public static final int ENTIER = 0;
+    public static final int BOOL = 1;
+	
     protected Expression(int n) {
         super(n) ;
     }
+    
+    public abstract int getType();
 
 }

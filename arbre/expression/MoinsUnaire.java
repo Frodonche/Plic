@@ -7,8 +7,8 @@ package plic.arbre.expression;
  */
 
 public class MoinsUnaire extends Unaire {
-    
-    public MoinsUnaire(Expression expr) {
+
+	public MoinsUnaire(Expression expr) {
         super(expr);
     }
 
@@ -16,5 +16,21 @@ public class MoinsUnaire extends Unaire {
     public String operateur() {
         return "- " ;
     }
+
+	@Override
+	public void verifier() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String toMIPS() {
+		return null;
+	}
+
+	@Override
+	public int getType() {
+		return ENTIER;
+	}
 
 }
