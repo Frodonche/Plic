@@ -1,5 +1,7 @@
 package plic.arbre.expression;
 
+import plic.exceptions.AnalyseSemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -19,7 +21,6 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
 		
 	}
 

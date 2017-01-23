@@ -1,5 +1,8 @@
 package plic.arbre.expression;
 
+import plic.exceptions.AnalyseException;
+import plic.exceptions.AnalyseSemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -18,8 +21,10 @@ public class Div extends BinaireArithmetique {
     }
 
 	@Override
-	public void verifier() {
-		
+	public void verifier() throws AnalyseException {
+		if (gauche.getType() != ENTIER && droite.getType() != ENTIER){
+			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
+		}
 	}
 
 	@Override

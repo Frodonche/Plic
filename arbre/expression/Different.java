@@ -1,5 +1,8 @@
 package plic.arbre.expression;
 
+import plic.exceptions.AnalyseException;
+import plic.exceptions.AnalyseSemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -18,8 +21,10 @@ public class Different extends Comparaison {
     }
 
 	@Override
-	public void verifier() {
-		// TODO Auto-generated method stub
+	public void verifier() throws AnalyseSemantiqueException {
+		if ((gauche.getType() != BOOL && droite.getType() != BOOL) || (gauche.getType() != ENTIER && droite.getType() != ENTIER)){
+			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
+		}
 		
 	}
 

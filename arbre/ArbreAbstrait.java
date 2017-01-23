@@ -10,6 +10,8 @@ public abstract class ArbreAbstrait {
     
     // numéro de ligne du début de l'instruction
     protected int noLigne ;
+    public static final int ENTIER = 0;
+    public static final int BOOL = 1;
     
     protected ArbreAbstrait(int no) {
         noLigne = no ;
