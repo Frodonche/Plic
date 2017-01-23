@@ -20,13 +20,17 @@ public class MoinsUnaire extends Unaire {
     }
 
 	@Override
-	public void verifier() {
+	public void verifier() throws AnalyseSemantiqueException {
+		if (expression.getType() != ENTIER){
+			throw new AnalyseSemantiqueException("erreur de type : " + expression.getType());
+		}
 		
 	}
 
 	@Override
 	public String toMIPS() {
-		return null;
+		return "li $v0, " + expression + "\n"
+				+ "sw $v0, 0($sp)\n";
 	}
 
 	@Override

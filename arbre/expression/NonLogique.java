@@ -1,5 +1,7 @@
 package plic.arbre.expression;
 
+import plic.exceptions.AnalyseSemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -18,8 +20,10 @@ public class NonLogique extends Unaire {
     }
 
 	@Override
-	public void verifier() {
-		// TODO Auto-generated method stub
+	public void verifier() throws AnalyseSemantiqueException {
+		if (expression.getType() != ENTIER){
+			throw new AnalyseSemantiqueException("erreur de type : " + expression.getType());
+		}
 		
 	}
 
