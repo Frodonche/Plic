@@ -30,11 +30,24 @@ public class NonLogique extends Unaire {
 	@Override
 	public String toMIPS() {
 		return "li $v0, " + expression + "\n"
-		+ "sw $v0, 0($sp)\n"
-		+ "lw $t8, ($sp)\n"
-		+ "not $v0, $t8\n"
-		+ "sw $v0, 0($sp)\n";
+				+ "sw $v0, 0($sp)\n"
+				+ "lw $t8, ($sp)\n"
+				+ "beq $t8, 0, egalite\n"
+				+ "li $v0, 0\n"
+				+ "b fin\n"
+				+ "\n"
+				+ "egalite : li $v0, 1\n"
+				+ "fin : sw $v0, 0($sp)\n";
 	}
+	
+	
+	
+		
+	
+	
+	
+	
+	
 
 	@Override
 	public int getType() {

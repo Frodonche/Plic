@@ -35,7 +35,7 @@ public class Moins extends BinaireArithmetique {
 				+ "li $v0, " + droite + "\n"
 				+ "add $sp, $sp, 4\n"
 				+ "lw $t8, ($sp)\n"
-				+ "add $v0, $t8, -$v0\n"
+				+ "sub $v0, $t8, $v0\n"
 				+ "sw $v0, 0($sp)\n";
 	}
 
