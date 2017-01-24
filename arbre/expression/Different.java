@@ -40,7 +40,7 @@ public class Different extends Comparaison {
 		+ "li $v0, 1\n"
 		+ "b fin\n"
 		+ "\n"
-		+ "egalite : $li $v0, 0\n"
+		+ "egalite : li $v0, 0\n"
 		+ "fin : sw $v0, 0($sp)\n";
 	}
 

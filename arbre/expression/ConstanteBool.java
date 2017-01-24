@@ -20,7 +20,6 @@ public class ConstanteBool extends Constante {
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -29,7 +29,6 @@ public class EtLogique extends BinaireLogique {
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
 		return "li $v0, " + gauche + "\n"
 		+ "sw $v0, 0($sp)\n"
 		+ "add $sp, $sp, -4\n"

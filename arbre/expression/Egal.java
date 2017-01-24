@@ -39,7 +39,7 @@ public class Egal extends Comparaison {
 				+ "li $v0, 0\n"
 				+ "b fin\n"
 				+ "\n"
-				+ "egalite : $li $v0, 1\n"
+				+ "egalite : li $v0, 1\n"
 				+ "fin : sw $v0, 0($sp)\n";
 	}
 
