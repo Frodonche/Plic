@@ -29,8 +29,11 @@ public class NonLogique extends Unaire {
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		return "li $v0, " + expression + "\n"
+		+ "sw $v0, 0($sp)\n"
+		+ "lw $t8, ($sp)\n"
+		+ "not $v0, $t8, $v0\n"
+		+ "sw $v0, 0($sp)\n";
 	}
 
 	@Override
