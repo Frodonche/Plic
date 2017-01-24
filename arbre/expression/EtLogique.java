@@ -36,7 +36,10 @@ public class EtLogique extends BinaireLogique {
 		+ "add $sp, $sp, 4\n"
 		+ "lw $t8, ($sp)\n"
 		+ "and $v0, $t8, $v0\n"
-		+ "sw $v0, 0($sp)\n";
+		+ "sw $v0, 0($sp)\n"
+		+ "move $v1, $v0\n"      
+        +"li $v0, 10\n"               
+        +"syscall\n";
 	}
 
 	@Override
