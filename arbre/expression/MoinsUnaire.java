@@ -29,7 +29,7 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public String toMIPS() {
-		return "li $v0, " + expression + "\n"
+		return "li $v0, -" + expression + "\n"
 				+ "sw $v0, 0($sp)\n";
 	}
 
