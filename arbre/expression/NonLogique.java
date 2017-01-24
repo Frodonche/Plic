@@ -37,7 +37,10 @@ public class NonLogique extends Unaire {
 				+ "b fin\n"
 				+ "\n"
 				+ "egalite : li $v0, 1\n"
-				+ "fin : sw $v0, 0($sp)\n";
+				+ "fin : sw $v0, 0($sp)\n" 
+				+ "move $v1, $v0\n"
+				+ "li $v0, 10\n"
+				+ "syscall\n";
 	}
 	
 	

@@ -30,7 +30,10 @@ public class MoinsUnaire extends Unaire {
 	@Override
 	public String toMIPS() {
 		return "li $v0, -" + expression + "\n"
-				+ "sw $v0, 0($sp)\n";
+				+ "sw $v0, 0($sp)\n" 
+				+ "move $v1, $v0\n"
+				+ "li $v0, 10\n"
+				+ "syscall\n";
 	}
 
 	@Override
