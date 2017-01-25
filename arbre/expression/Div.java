@@ -22,7 +22,7 @@ public class Div extends BinaireArithmetique {
 
 	@Override
 	public void verifier() throws AnalyseException {
-		if (gauche.getType() != ENTIER && droite.getType() != ENTIER){
+		if (gauche.getType() != ENTIER || droite.getType() != ENTIER){
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 	}

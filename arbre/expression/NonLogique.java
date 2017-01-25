@@ -21,7 +21,7 @@ public class NonLogique extends Unaire {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if (expression.getType() != ENTIER){
+		if (expression.getType() != BOOL){
 			throw new AnalyseSemantiqueException("erreur de type : " + expression.getType());
 		}
 		
@@ -43,15 +43,6 @@ public class NonLogique extends Unaire {
 		
 		return sb.toString();
 	}
-	
-	
-	
-		
-	
-	
-	
-	
-	
 
 	@Override
 	public int getType() {

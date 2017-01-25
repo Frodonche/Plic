@@ -21,7 +21,7 @@ public class Egal extends Comparaison {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if ((gauche.getType() != BOOL && droite.getType() != BOOL) || (gauche.getType() != ENTIER && droite.getType() != ENTIER)){
+		if ((gauche.getType() != BOOL && droite.getType() != BOOL) && (gauche.getType() != ENTIER && droite.getType() != ENTIER)){
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 		

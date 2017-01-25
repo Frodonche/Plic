@@ -21,7 +21,7 @@ public class OuLogique extends BinaireLogique {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if (gauche.getType() != BOOL && droite.getType() != BOOL){
+		if (gauche.getType() != BOOL || droite.getType() != BOOL){
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 		
