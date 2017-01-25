@@ -1,0 +1,10 @@
+test1 ok
+test2 ok
+test3 ok
+test4 fail
+test5 ok
+test6 pas sûr
+test7 (26 + faux) : faux est interprété comme 0 et dans $v1 on a donc 26 faut-il afficher une erreur?
+test8 pas sûr
+test9 bon mais le code mips conduit à une erreur (division par 0) faut-il la gérer?
+test10 même chose

@@ -34,7 +34,7 @@ public class ConstanteBool extends Constante {
 
 	@Override
 	public int getType() {
-		return ENTIER;
+		return BOOL;
 	}
 
 }
