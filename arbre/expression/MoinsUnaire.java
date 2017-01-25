@@ -29,8 +29,14 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public String toMIPS() {
-		return "li $v0, -" + expression.toMIPS() + "\n"
-				+ "sw $v0, 0($sp)\n" ;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("li $v0, -");
+		sb.append(expression.toMIPS());
+		sb.append("\n");
+		sb.append("sw $v0, 0($sp)\n");
+		
+		return sb.toString();
 	}
 
 	@Override
