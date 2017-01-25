@@ -1,10 +1,10 @@
 test1 ok
 test2 ok
 test3 ok
-test4 fail
+test4 fail : c'est le MoinsUnaire qui ne marche pas, plus que lui à corriger
 test5 ok
 test6 ok
 test7 ok (26 + faux) : une erreur est maintenant levée
 test8 ok
-test9 division par 0 (l'arbre est construit)
-test10 même chose
+test9 ok : division par 0 (l'arbre est construit), ça compile en C donc je suppose que c'est bon
+test10 ok : même chose

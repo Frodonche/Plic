@@ -42,7 +42,7 @@ public class Plic {
             FileWriter fw;
             
             try {
-            	fw = new FileWriter("arbre.mips");
+            	fw = new FileWriter("arbre.asm");
                 fw.write(sb.toString());
                 fw.close();           
             }
