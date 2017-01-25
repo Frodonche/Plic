@@ -24,6 +24,7 @@ public class Plic {
             AnalyseurSyntaxique analyseur = new AnalyseurSyntaxique(new AnalyseurLexical(new FileReader(fichier)));
             ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value;
             
+            // Est-ce que l'arbre est valide?
             arbre.verifier();
             
             // Affichage de l'arbre (s'il est valide)
