@@ -30,18 +30,23 @@ public class Different extends Comparaison {
 
 	@Override
 	public String toMIPS() {
-		return "" + gauche.toMIPS() + "\n"
-		+ "sw $v0, 0($sp)\n"
-		+ "add $sp, $sp, -4\n"
-		+ "" + droite.toMIPS() + "\n"
-		+ "add $sp, $sp, 4\n"
-		+ "lw $t8, ($sp)\n"
-		+ "beq $t8, $v0, egalite\n"
-		+ "li $v0, 1\n"
-		+ "b fin\n"
-		+ "\n"
-		+ "egalite : li $v0, 0\n"
-		+ "fin : sw $v0, 0($sp)\n";
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(gauche.toMIPS());
+		sb.append("\n");
+		sb.append("sw $v0, 0($sp)\n");
+		sb.append("add $sp, $sp, -4\n");
+		sb.append(droite.toMIPS());
+		sb.append("\n");
+		sb.append("add $sp, $sp, 4\n");
+		sb.append("lw $t8, ($sp)\n");
+		sb.append("beq $t8, $v0, egalite\n");
+		sb.append("li $v0, 1\n");
+		sb.append("b fin\n\n");
+		sb.append("egalite : li $v0, 0\n");
+		sb.append("fin : sw $v0, 0($sp)\n");
+		
+		return sb.toString();
 	}
 
 	@Override

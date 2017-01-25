@@ -20,7 +20,16 @@ public class ConstanteBool extends Constante {
 
 	@Override
 	public String toMIPS() {
-		return "li $v0, " + cste;
+		StringBuilder sb = new StringBuilder("li $v0, ");
+		
+	    if (cste.equals("vrai")) {
+	    	sb.append("1");	    	
+	    }
+	    else {
+	    	sb.append("0");
+	    }
+	    
+		return sb.toString(); 
 	}
 
 	@Override
