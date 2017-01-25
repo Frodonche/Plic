@@ -29,7 +29,7 @@ public class NonLogique extends Unaire {
 
 	@Override
 	public String toMIPS() {
-		return "li $v0, " + expression + "\n"
+		return "" + expression.toMIPS() + "\n"
 				+ "sw $v0, 0($sp)\n"
 				+ "lw $t8, ($sp)\n"
 				+ "beq $t8, 0, egalite\n"
@@ -37,10 +37,7 @@ public class NonLogique extends Unaire {
 				+ "b fin\n"
 				+ "\n"
 				+ "egalite : li $v0, 1\n"
-				+ "fin : sw $v0, 0($sp)\n" 
-				+ "move $v1, $v0\n"
-				+ "li $v0, 10\n"
-				+ "syscall\n";
+				+ "fin : sw $v0, 0($sp)\n" ;
 	}
 	
 	

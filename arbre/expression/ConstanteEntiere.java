@@ -20,7 +20,7 @@ public class ConstanteEntiere extends Constante {
 
 	@Override
 	public String toMIPS() {
-		return null;
+		return "li $v0, " + cste;
 	}
 
 	public int getType() {

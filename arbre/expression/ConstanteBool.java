@@ -20,7 +20,7 @@ public class ConstanteBool extends Constante {
 
 	@Override
 	public String toMIPS() {
-		return null;
+		return "li $v0, " + cste;
 	}
 
 	@Override

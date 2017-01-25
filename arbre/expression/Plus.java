@@ -29,17 +29,14 @@ public class Plus extends BinaireArithmetique {
 
 	@Override
 	public String toMIPS() {
-		return "li $v0, " + gauche + "\n"
+		return "" + gauche.toMIPS() + "\n"
 				+ "sw $v0, 0($sp)\n"
 				+ "add $sp, $sp, -4\n"
-				+ "li $v0, " + droite + "\n"
+				+ "" + droite.toMIPS() + "\n"
 				+ "add $sp, $sp, 4\n"
 				+ "lw $t8, ($sp)\n"
 				+ "add $v0, $t8, $v0\n"
-				+ "sw $v0, 0($sp)\n" 
-				+ "move $v1, $v0\n"
-				+ "li $v0, 10\n"
-				+ "syscall\n";
+				+ "sw $v0, 0($sp)\n";
 	}
 
 	public int getType() {
