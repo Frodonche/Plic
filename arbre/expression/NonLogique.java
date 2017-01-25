@@ -29,15 +29,19 @@ public class NonLogique extends Unaire {
 
 	@Override
 	public String toMIPS() {
-		return "" + expression.toMIPS() + "\n"
-				+ "sw $v0, 0($sp)\n"
-				+ "lw $t8, ($sp)\n"
-				+ "beq $t8, 0, egalite\n"
-				+ "li $v0, 0\n"
-				+ "b fin\n"
-				+ "\n"
-				+ "egalite : li $v0, 1\n"
-				+ "fin : sw $v0, 0($sp)\n" ;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(expression.toMIPS());
+		sb.append("\n");
+		sb.append("sw $v0, 0($sp)\n");
+		sb.append("lw $t8, ($sp)\n");
+		sb.append("beq $t8, 0, egalite\n");
+		sb.append("li $v0, 0\n");
+		sb.append("b fin\n\n");
+		sb.append("egalite : li $v0, 1\n");
+		sb.append("fin : sw $v0, 0($sp)\n");
+		
+		return sb.toString();
 	}
 	
 	

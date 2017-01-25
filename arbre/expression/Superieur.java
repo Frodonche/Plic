@@ -29,14 +29,20 @@ public class Superieur extends Comparaison {
 
 	@Override
 	public String toMIPS() {
-		return "" + gauche.toMIPS() + "\n"
-				+ "sw $v0, 0($sp)\n"
-				+ "add $sp, $sp, -4\n"
-				+ "" + droite.toMIPS() + "\n"
-				+ "add $sp, $sp, 4\n"
-				+ "lw $t8, ($sp)\n"
-				+ "slt $v0, $v0, $t8\n"
-				+ "sw $v0, 0($sp)\n" ;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(gauche.toMIPS());
+		sb.append("\n");
+		sb.append("sw $v0, 0($sp)\n");
+		sb.append("add $sp, $sp, -4\n");
+		sb.append(droite.toMIPS());
+		sb.append("\n");
+		sb.append("add $sp, $sp, 4\n");
+		sb.append("lw $t8, ($sp)\n");
+		sb.append("slt $v0, $v0, $t8\n");
+		sb.append("sw $v0, 0($sp)\n");
+		
+		return sb.toString();
 	}
 
 	@Override
