@@ -31,10 +31,19 @@ import plic.exceptions.AnalyseLexicaleException;
 csteE = [0-9]+
 csteB = "vrai" | "faux"
 
+/*plic1*/
+
+csteChaine = [-+*/!"#$%&'(),.:;<=>?@[\]^_`{|}~ \t\n\x0B\f\r_A-Za-z0-9]*
+idf = [A-Za-z][_A-Za-z0-9]*
+
+/*fin plic1*/
+
+
 finDeLigne = \r|\n
 espace = {finDeLigne}  | [ \t\f]
 
 %%
+"//"                { return symbol(CodesLexicaux.DOUBLESLASH); }
 
 "+"                	{ return symbol(CodesLexicaux.PLUS); }
 "-"                	{ return symbol(CodesLexicaux.MOINS); }
@@ -55,6 +64,23 @@ espace = {finDeLigne}  | [ \t\f]
 
 {csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext()); }
 {csteB}      	        { return symbol(CodesLexicaux.CONSTANTEBOOL, yytext()); }
+
+/*plic1*/
+
+";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }
+"="                	{ return symbol(CodesLexicaux.EGAL); }
+
+"classe"                	{ return symbol(CodesLexicaux.CLASS); }
+"fin"                	{ return symbol(CodesLexicaux.FIN); }
+"privee"                	{ return symbol(CodesLexicaux.PRIVATE); }
+"public"                	{ return symbol(CodesLexicaux.PUBLIC); }
+"entier"                	{ return symbol(CodesLexicaux.ENTIER); }
+"ecrire"                	{ return symbol(CodesLexicaux.WRITE); }
+
+
+{idf}				{ return symbol(CodesLexicaux.IDF, yytext()) ; }
+{csteChaine}        { return symbol(CodesLexicaux.CONSTANTECHAINE, yytext()) ; }
+/*fin plic1*/
 
 {espace}                { }
 

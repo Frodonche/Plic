@@ -238,12 +238,12 @@ public class AnalyseurLexical implements java_cup.runtime.Scanner {
   private int zzFinalHighSurrogate = 0;
 
   /* user code: */
-  private Symbol symbol(int type) {
-	return new Symbol(type, yyline, yycolumn) ;
+  private Symbole symbol(int type) {
+	return new Symbole(type, yyline, yycolumn) ;
   }
 
-  private Symbol symbol(int type, Object value) {
-	return new Symbol(type, yyline, yycolumn, value) ;
+  private Symbole symbol(int type, Object value) {
+	return new Symbole(type, yyline, yycolumn, value) ;
   }
 
 
@@ -489,7 +489,7 @@ public class AnalyseurLexical implements java_cup.runtime.Scanner {
    * @return      the next token
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
-  public Symbol next_token() throws java.io.IOException {
+  public Symbole next_token() throws java.io.IOException {
     int zzInput;
     int zzAction;
 

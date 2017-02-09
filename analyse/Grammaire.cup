@@ -68,7 +68,8 @@ parser code {:
 
 terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
 terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal String    CONSTANTEINT, CONSTANTEBOOL ;
+terminal Symbol    POINTVIRGULE, PUBLIC, PRIVATE, WRITE, CLASS, FIN, ENTIER, EGAL, DOUBLESLASH ;
+terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE ;
    
 /* Non terminals used in the grammar section.  */
 
@@ -141,3 +142,37 @@ CSTE    ::=     CONSTANTEINT:e
         |       CONSTANTEBOOL:e 
                 {: RESULT = new ConstanteBool(e, eleft+1) ; :}
                 ;
+                
+                
+/* Plic 1 */
+
+SYSTEME  ::=     CLASSE:c
+				{: RESULT = c}
+
+CLASSE   ::=     CLASS:c IDF:i {DECLARATION:d}* FIN:f
+
+DECLARATION  ::= DECL_CHAMP:ch
+				{: RESULT = ch}
+		     |   DECL_CONST:co
+		     {: RESULT = co}
+
+DECL_CHAMP ::= STATUT TYPE IDF {, IDF}* POINTVIRGULE
+
+STATUS     ::= PUBLIC
+			|	PRIVATE
+			
+TYPE		::= ENTIER
+
+DECL_CONST	::= {INSTRUCTION}+
+
+INSTRUCTION	::= AFFECT
+			|	ECRIRE
+			
+AFFECT		::=	ACCES EGAL EXPR POINTVIRGULE
+
+ACCES		::= IDF
+
+ECRIRE		::= WRITE EXPR POINTVIRGULE
+			|	WRITE CONSTANTECHAINE POINTVIRGULE 
+			
+COMMENTAIRE	::= DOUBLESLASH CONSTANTECHAINE
