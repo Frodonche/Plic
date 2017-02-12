@@ -3,21 +3,21 @@ package plic;
 import java.util.ArrayList;
 
 public class Symbole {
-	String nom; //pas sûre
-	String type;
+	int privPub; //pas sûre
+	int type;
 	int placeDansLaPile;
 	
-	public Symbole(String n, String typ, int pile){
-		nom = n;
+	public Symbole(int p, int typ, int pile){
+		privPub = p;
 		type = typ;
 		placeDansLaPile = pile;
 	}
 
-	public String getNom() {
-		return nom;
+	public int getPrivPub() {
+		return privPub;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
