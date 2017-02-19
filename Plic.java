@@ -28,7 +28,7 @@ public class Plic {
             arbre.verifier();
             
             // Affichage de l'arbre (s'il est valide)
-            System.out.println("expression stockée dans l'arbre : " + arbre);
+            System.out.println("expression stockee dans l'arbre : " + arbre);
             
             StringBuilder sb = new StringBuilder();
             
@@ -47,7 +47,7 @@ public class Plic {
                 fw.close();           
             }
             catch (IOException e) { 
-            	System.err.println("Impossible d'écrire le code MIPS dans un fichier");
+            	System.err.println("Impossible d'ecrire le code MIPS dans un fichier");
             }
         } 
         catch (FileNotFoundException ex) {
