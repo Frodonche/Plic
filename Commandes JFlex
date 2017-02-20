@@ -1,0 +1,28 @@
+Commandes récupérées sur le TP Toucan (en brut pour l'instant)
+
+Placez-vous dans votre répertoire analyse et demandez la construction de l’analyseur syntaxique par la commande :
+
+1-
+java  -jar  /opt/depot/projetToucan/java-cup-11a.jar  -parser  AnalyseurSyntaxique  -symbols CodesLexicaux  Grammaire.cup
+
+-parser<nomClasse> permet de choisir le nom de la classe java produite
+(parser par défaut, AnalyseurSyntaxique dans notre cas)
+
+-symbols<nomFichier> permet de choisir le nom du fichier contenant les codes utilisés par JFlex
+(syms par défaut, CodesLexicaux dans notre cas)
+
+
+Toujours dans le répertoire analyse
+
+2-
+java -jar /opt/depot/projetToucan/jflex-1.6.1.jar AnalyseurLexical.jflex
+
+
+Revenir au niveau de src
+
+3-
+javac  -cp  /opt/depot/projetToucan/java-cup-11a.jar:.  toucan/analyse/*.java
+
+
+4-
+java -cp /opt/depot/projetToucan/java-cup-11a.jar:. toucan.analyse.TestAnalyse fichier
