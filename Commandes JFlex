@@ -30,7 +30,7 @@ java -cp /opt/depot/projetToucan/java-cup-11a.jar:. toucan.analyse.TestAnalyse f
 
 ça marche sur Toucan
 
-
+/////////////////////////////////////////////////////////////// Le bon commence ici /////////////////////////////////////////////////////
 
 
 1- Se placer dans le répertoire analyse
