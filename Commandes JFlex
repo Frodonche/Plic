@@ -26,3 +26,23 @@ javac  -cp  /opt/depot/projetToucan/java-cup-11a.jar:.  toucan/analyse/*.java
 
 4-
 java -cp /opt/depot/projetToucan/java-cup-11a.jar:. toucan.analyse.TestAnalyse fichier
+
+
+ça marche sur Toucan
+
+
+
+
+1- Se placer dans le répertoire analyse
+java -jar <emplacement Java-Cup> -parser AnalyseurSyntaxique -symbols CodesLexicaux Grammaire.cup
+
+2-
+java -jar <emplacement jflex> AnalyseurLexical.jflex
+
+3- Revenir au niveau de src 
+javac -cp <emplacement Java-cup>:. plic/analyse/*.java 
+/!\ Sous Windows, on remplace :. par ;. /!\
+
+4- (avec fichier placé dans src)
+java -cp <emplacement Java-cup>:. plic.analyse.<FichierTestAnalyse> <fichier de test contenant le code à tester>
+/!\ Sous Windows, on remplace :. par ;. /!\
