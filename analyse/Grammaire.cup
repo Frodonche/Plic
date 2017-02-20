@@ -73,7 +73,7 @@ terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG ;
+non terminal ArbreAbstrait PROG, SYSTEME ;
 non terminal Expression EXPR, CSTE ;
 
 precedence left INF, SUP ;

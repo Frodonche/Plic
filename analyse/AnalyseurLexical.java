@@ -3,6 +3,7 @@
 package plic.analyse ;
 
 import java_cup.runtime.*;
+import plic.Symbole;
 import plic.exceptions.AnalyseLexicaleException;
       
 
