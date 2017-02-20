@@ -46,3 +46,7 @@ javac -cp <emplacement Java-cup>:. plic/analyse/*.java
 4- (avec fichier placé dans src)
 java -cp <emplacement Java-cup>:. plic.analyse.<FichierTestAnalyse> <fichier de test contenant le code à tester>
 /!\ Sous Windows, on remplace :. par ;. /!\
+
+
+Ne pas oublier d'importer jflex et javacup sous Eclipse :
+Clic droit sur Plic -> Properties -> Java Build Path -> Libraries -> Add External Jar -> <Chemin de Jflex et Javacup> (/opt/depot/projetToucan à la fac)
