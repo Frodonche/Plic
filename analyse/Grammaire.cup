@@ -66,15 +66,15 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
-terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal Symbol    POINTVIRGULE, PUBLIC, PRIVATE, WRITE, CLASS, FIN, ENTIER, EGAL, DOUBLESLASH ;
+terminal Symbole    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
+terminal Symbole    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
+terminal Symbole    POINTVIRGULE, PUBLIC, PRIVATE, WRITE, CLASS, FIN, ENTIER, EGAL, DOUBLESLASH ;
 terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE ;
    
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG, SYSTEME ;
-non terminal Expression EXPR, CSTE ;
+non terminal Expression EXPR, CSTE, CLASSE, ECRIRE, AFFECT, ACCES, COMMENTAIRE;
 
 precedence left INF, SUP ;
 precedence left EGALEGAL, DIFF;
@@ -83,6 +83,7 @@ precedence left MULT, DIV ;
 precedence left OU ;
 precedence left ET ;
 precedence left NON ;
+precedence left CLASS;
 
 /* ----------------------------Grammar Section-------------------- */
  
@@ -147,7 +148,7 @@ CSTE    ::=     CONSTANTEINT:e
 /* Plic 1 */
 
 SYSTEME  ::=     CLASSE:c
-				{: RESULT = c}
+				{: RESULT = c; :}
 		;
 
 CLASSE   ::=     CLASS:c IDF:i LISTEDECLARATION:d FIN:f
@@ -159,9 +160,9 @@ LISTEDECLARATION	::=	LISTEDECLARATION DECLATATION
 					;
 					
 DECLARATION  ::= DECL_CHAMP:ch
-				{: RESULT = ch}
+				{: RESULT = ch; :}
 		     |   DECL_CONST:co
-		     {: RESULT = co}
+		     {: RESULT = co; :}
 			;
 			
 DECL_CHAMP ::= STATUT TYPE LISTEIDF POINTVIRGULE

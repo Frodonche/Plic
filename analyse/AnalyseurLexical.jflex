@@ -19,13 +19,14 @@ import plic.exceptions.AnalyseLexicaleException;
 %cup
 
 %{
-  private Symbol symbol(int type) {
-	return new Symbol(type, yyline, yycolumn) ;
+  private Symbole symbol(int type) {
+	return new Symbole(type, yyline, yycolumn) ;
   }
 
-  private Symbol symbol(int type, Object value) {
-	return new Symbol(type, yyline, yycolumn, value) ;
+  private Symbole symbol(int type, Object value) {
+	return new Symbole(type, yyline, yycolumn, value) ;
   }
+
 %}
 
 csteE = [0-9]+
