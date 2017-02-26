@@ -2,7 +2,9 @@ package plic;
 
 import java.util.ArrayList;
 
-public class Symbole {
+import java_cup.runtime.Symbol;
+
+public class Symbole{
 	int privPub; //pas sûre
 	int type;
 	int placeDansLaPile;
