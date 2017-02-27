@@ -68,14 +68,14 @@ parser code {:
 
 terminal Symbole    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
 terminal Symbole    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal Symbole    POINTVIRGULE, PUBLIC, PRIVATE, WRITE, CLASS, FIN, ENTIER, EGAL, DOUBLESLASH ;
-terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE ;
+terminal Symbole    POINTVIRGULE, WRITE, CLASS, FIN, ENTIER, EGAL, DOUBLESLASH ;
+terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE, STAT, TYP ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, SYSTEME ;
+non terminal ArbreAbstrait PROG, SYSTEME, LISTEDECLARATION, DECLARATION, DECL_CHAMP, DECL_CONST, STATUT ;
 non terminal Expression EXPR, CSTE, CLASSE, ECRIRE, AFFECT, ACCES, COMMENTAIRE;
-non terminal Declaration LISTEDECLARATION, DECLARATION, DECL_CHAMP, DECL_CONST, STATUS;
+
 
 precedence left INF, SUP ;
 precedence left EGALEGAL, DIFF;
@@ -156,35 +156,67 @@ CLASSE   ::=     CLASS:c IDF:i LISTEDECLARATION:d FIN:f
 			|	CLASS IDF FIN
 			;
 
-LISTEDECLARATION	::=	LISTEDECLARATION DECLARATION
-					|	DECLARATION
+LISTEDECLARATION	::=	LISTEDECLARATION:ld DECLARATION:d
+					{: 
+					((ListeDeclarations) ld).ajouter(d);
+					RESULT = ld;
+					:}
+					|	DECLARATION:d
+					{:  
+			ArbreAbstrait ld = new ListeDeclarations(0) ;
+			
+			((ListeDeclarations) ld).ajouter(d) ;
+			RESULT = ld ;
+		:}
 					;
 					
-DECLARATION  ::= DECL_CHAMP:ch
+DECLARATION  ::= DECL_CHAMP:ch POINTVIRGULE
 				{: RESULT = ch; :}
-		     |   DECL_CONST:co
+		     |   DECL_CONST:co POINTVIRGULE
 		     {: RESULT = co; :}
+		     | PROG:p POINTVIRGULE
+			{: RESULT = p ; :}
 			;
 			
-DECL_CHAMP ::= STATUS TYPE LISTEIDF POINTVIRGULE
+DECL_CHAMP ::= STATUS:s TYPE:t LISTEIDF:li
+			{: RESULT = new DeclarationChamp(0, s, t, li):}
 			;
 
-LISTEIDF	::=	LISTEIDF IDF
+LISTEIDF	::=	LISTEIDF:li IDF:i
+			{: ((ListeIDF) li).ajouter(i) ;
+			RESULT = li ;
+			:}
 			|	IDF
+			{:  
+			ArbreAbstrait li = new ListeIDF(0) ;
+			
+			((ListeIDF) li).ajouter(i) ;
+			RESULT = li ;
+			:}
 			;
 			
-STATUS     ::= PUBLIC
-			|	PRIVATE
-			;
+STATUS     ::= STAT:s
+			{: RESULT = s ; :}
 			
-TYPE		::= ENTIER
+TYPE		::= TYP:t
+			{: RESULT = t ; :}
 			;
 
-DECL_CONST	::= INSTRUCTION
+DECL_CONST	::= LISTEINSTRUCTION:li
+			{: RESULT = li ; :}
 			;
 
-LISTEINSTRUCTION	::=	LISTEINSTRUCTION INSTRUCTION
+LISTEINSTRUCTION	::=	LISTEINSTRUCTION:li INSTRUCTION:i
+					{: ((ListeInstructions) li).ajouter(i) ;
+					RESULT = li ;
+					:}
 					|	INSTRUCTION
+					{:  
+					ArbreAbstrait li = new ListeInstructions(0) ;
+			
+					((ListeInstructions) li).ajouter(i) ;
+					RESULT = li ;
+					:}
 					;
 
 INSTRUCTION	::= AFFECT:a
@@ -193,10 +225,12 @@ INSTRUCTION	::= AFFECT:a
 			{:  RESULT = e ;  :}
 			;
 			
-AFFECT		::=	ACCES EGAL EXPR POINTVIRGULE
+AFFECT		::=	ACCES:a EGAL EXPR:e POINTVIRGULE
+			{: RESULT = new Affectation(eleft+1, e, a) ; :}
 			;
 			
-ACCES		::= IDF
+ACCES		::= IDF:i
+			{: RESULT = i ; :}
 			;
 			
 ECRIRE		::= WRITE EXPR POINTVIRGULE
