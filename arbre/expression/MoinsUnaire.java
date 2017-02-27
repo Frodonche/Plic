@@ -21,7 +21,7 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if (expression.getType() != ENTIER){
+		if (expression.getType() != ENTIER) {
 			throw new AnalyseSemantiqueException("erreur de type : " + expression.getType());
 		}
 		

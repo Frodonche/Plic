@@ -24,7 +24,7 @@ public class Idf extends Expression {
 	public void verifier() {
 		symbole = Tds.getInstance().identifier(new Entree(nom));
 		if (symbole == null) {
-			throw new AnalyseSemantiqueException("La variable " + nom + "n'a pas ete declaree");
+			throw new AnalyseSemantiqueException("La variable " + nom + " n'a pas ete declaree");
 		}
 	}
 
@@ -34,7 +34,7 @@ public class Idf extends Expression {
 	}
 	
 	public String toString() {
-        return nom ;
+        return nom;
     }
 
 }
