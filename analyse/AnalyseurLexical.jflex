@@ -31,10 +31,12 @@ import plic.exceptions.AnalyseLexicaleException;
 
 csteE = [0-9]+
 csteB = "vrai" | "faux"
+stat = "public" | "privee"
+typ = "entier"
 
 /*plic1*/
 
-csteChaine = [-+*/!"#$%&'(),.:;<=>?@[\]^_`{|}~ \t\n\x0B\f\r_A-Za-z0-9]*
+csteChaine = [-+*/!#$%&'(),.:;<=>?@[\]^_`{|}~ \t\n\x0B\f\r_A-Za-z0-9]*
 idf = [A-Za-z][_A-Za-z0-9]*
 
 /*fin plic1*/
@@ -70,12 +72,11 @@ espace = {finDeLigne}  | [ \t\f]
 
 ";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }
 "="                	{ return symbol(CodesLexicaux.EGAL); }
+{stat}      	        { return symbol(CodesLexicaux.STAT, yytext()); }
 
 "classe"                	{ return symbol(CodesLexicaux.CLASS); }
 "fin"                	{ return symbol(CodesLexicaux.FIN); }
-"privee"                	{ return symbol(CodesLexicaux.PRIVATE); }
-"public"                	{ return symbol(CodesLexicaux.PUBLIC); }
-"entier"                	{ return symbol(CodesLexicaux.ENTIER); }
+{typ}                	{ return symbol(CodesLexicaux.TYP, yytext()); }
 "ecrire"                	{ return symbol(CodesLexicaux.WRITE); }
 
 
