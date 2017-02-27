@@ -24,26 +24,36 @@ public class Plic {
             AnalyseurSyntaxique analyseur = new AnalyseurSyntaxique(new AnalyseurLexical(new FileReader(fichier)));
             ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value;
             
-            // Est-ce que l'arbre est valide?
             arbre.verifier();
+            System.out.println("COMPILATION OK");
             
-            // Affichage de l'arbre (s'il est valide)
-            System.out.println("expression stockee dans l'arbre : " + arbre);
+            StringBuilder codeMIPS = new StringBuilder();
             
-            StringBuilder sb = new StringBuilder();
-            
-            sb.append("main :\n");
-            sb.append(arbre.toMIPS());
-            sb.append("\nend :\n");
-            sb.append("move $v1, $v0\t\n");
-            sb.append("li $v0, 10\t\n");
-            sb.append("syscall\n");
+            codeMIPS.append("main :\n");
+            codeMIPS.append(arbre.toMIPS());
+            codeMIPS.append("\nend :\n");
+            codeMIPS.append("move $v1, $v0\t\n");
+            codeMIPS.append("li $v0, 10\t\n");
+            codeMIPS.append("syscall\n");
             
             FileWriter fw;
+            StringBuilder fichierMIPS = new StringBuilder();
+            int suffixe;
+            
+            suffixe = fichier.lastIndexOf('.');
+            
+            if (suffixe < 1) {
+            	fichierMIPS.append(fichier);
+            }
+            else {
+            	fichierMIPS.append(fichier.substring(0, suffixe));
+            }
+            
+            fichierMIPS.append(".mips");
             
             try {
-            	fw = new FileWriter("arbre.asm");
-                fw.write(sb.toString());
+            	fw = new FileWriter(fichierMIPS.toString());
+                fw.write(codeMIPS.toString());
                 fw.close();           
             }
             catch (IOException e) { 
@@ -67,6 +77,7 @@ public class Plic {
             System.err.println("\tjava -jar plic.jar <fichierSource.plic>") ;
             System.exit(1) ;
         }
+        
         new Plic(args[0]) ;
     }
     
