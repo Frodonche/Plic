@@ -17,8 +17,8 @@ public class Affectation extends Binaire {
 	@Override
 	public void verifier() throws AnalyseException {
 		gauche.verifier();
-		droite.verifier();
-		if (!typesConcordent()){
+		droite.verifier();		
+		if (!typesConcordent()) {
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 	}
@@ -34,10 +34,10 @@ public class Affectation extends Binaire {
 	}
 	
 	public boolean typesConcordent(){
-		if((gauche.getType() == ENTIER && droite.getType() == ENTIER)
-				|| (gauche.getType() == BOOL && droite.getType() == BOOL)){
+		if (gauche.getType() == droite.getType()) {
 			return true;
 		}
+		
 		return false;
 	}
 

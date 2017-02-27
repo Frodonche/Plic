@@ -24,9 +24,11 @@ public class Plic {
             AnalyseurSyntaxique analyseur = new AnalyseurSyntaxique(new AnalyseurLexical(new FileReader(fichier)));
             ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value;
             
+            /* Verification de l'arbre */
             arbre.verifier();
             System.out.println("COMPILATION OK");
             
+            /* Recuperation du code MIPS */
             StringBuilder codeMIPS = new StringBuilder();
             
             codeMIPS.append("main :\n");
@@ -36,7 +38,7 @@ public class Plic {
             codeMIPS.append("li $v0, 10\t\n");
             codeMIPS.append("syscall\n");
             
-            FileWriter fw;
+            /* Determine le nom de fichier ou enregistrer le code MIPS */
             StringBuilder fichierMIPS = new StringBuilder();
             int suffixe;
             
@@ -50,6 +52,9 @@ public class Plic {
             }
             
             fichierMIPS.append(".mips");
+            
+            /* Ecriture du code MIPS */
+            FileWriter fw;
             
             try {
             	fw = new FileWriter(fichierMIPS.toString());

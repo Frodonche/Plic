@@ -20,10 +20,11 @@ public class Tds {
 	
 	public void ajouter(Entree e, Symbole s) throws DoubleDeclarationException{
 		if (map.containsKey(e)){
-			throw new DoubleDeclarationException("La variable " + e + " a déjà été déclarée");
-		} else {
+			throw new DoubleDeclarationException("La variable " + e + " a deja ete declaree");
+		} 
+		else {
 			map.put(e, s);
-			tailleZone = tailleZone+1;
+			tailleZone = tailleZone + 1;
 		}
 	}
 
