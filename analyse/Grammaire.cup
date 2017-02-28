@@ -195,8 +195,9 @@ LISTEIDF	::=	LISTEIDF:li IDF:i
 			:}
 			;
 			
-STATUS     ::= STAT:s
+STATUT     ::= STAT:s
 			{: RESULT = s ; :}
+			;
 			
 TYPE		::= TYP:t
 			{: RESULT = t ; :}
