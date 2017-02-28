@@ -68,7 +68,7 @@ parser code {:
 
 terminal Symbole    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
 terminal Symbole    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal Symbole    POINTVIRGULE, WRITE, CLASS, FIN, ENTIER, EGAL, DOUBLESLASH ;
+terminal Symbole    POINTVIRGULE, WRITE, CLASS, FIN, EGAL, DOUBLESLASH ;
 terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE, STAT, TYP ;
    
 /* Non terminals used in the grammar section.  */
@@ -234,8 +234,10 @@ ACCES		::= IDF:i
 			{: RESULT = i ; :}
 			;
 			
-ECRIRE		::= WRITE EXPR POINTVIRGULE
-			|	WRITE CONSTANTECHAINE POINTVIRGULE 
+ECRIRE		::= WRITE EXPR:e POINTVIRGULE
+			{: RESULT = new Ecrire(eleft+1, e.toString()); :}
+			|	WRITE CONSTANTECHAINE POINTVIRGULE
+			 {: RESULT = new Ecrire(cleft+1, c); :}
 			;
 			
 COMMENTAIRE	::= DOUBLESLASH CONSTANTECHAINE

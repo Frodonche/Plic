@@ -21,7 +21,7 @@ public class Different extends Comparaison {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if (gauche.getType() != ENTIER || droite.getType() != ENTIER){
+		if (gauche.getType() != droite.getType()){
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 		

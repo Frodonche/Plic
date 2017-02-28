@@ -36,7 +36,7 @@ typ = "entier"
 
 /*plic1*/
 
-csteChaine = [-+*/!#$%&'(),.:;<=>?@[\]^_`{|}~ \t\n\x0B\f\r_A-Za-z0-9]*
+csteChaine = [-+*/ \t\n\x0B\f\r_A-Za-z0-9]*
 idf = [A-Za-z][_A-Za-z0-9]*
 
 /*fin plic1*/
