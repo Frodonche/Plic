@@ -178,7 +178,7 @@ DECLARATION  ::= DECL_CHAMP:ch POINTVIRGULE
 			{: RESULT = p ; :}
 			;
 			
-DECL_CHAMP ::= STATUS:s TYPE:t LISTEIDF:li
+DECL_CHAMP ::= STATUT:s TYPE:t LISTEIDF:li
 			{: RESULT = new DeclarationChamp(0, s, t, li):}
 			;
 
