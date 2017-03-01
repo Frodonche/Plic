@@ -7,7 +7,7 @@ public class Ecrire extends ArbreAbstrait {
 	
 	private static int noLabel = 0;
 	
-	protected Ecrire(int no, String s) {
+	public Ecrire(int no, String s) {
 		super(no);
 		string = s;
 	}

@@ -7,7 +7,7 @@ import plic.arbre.ArbreAbstrait;
 public class ListeIDF {
 	protected ArrayList<String> listeIDF; 
 
-	protected ListeIDF() {
+	public ListeIDF() {
 		listeIDF = new ArrayList<String>();
 	}
 	
@@ -15,4 +15,8 @@ public class ListeIDF {
 		listeIDF.add(s);
 	}
 
+	public ArrayList<String> getListeIDF() {
+		return listeIDF;
+	}
+	
 }

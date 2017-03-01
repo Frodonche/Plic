@@ -12,7 +12,7 @@ public class Affectation extends Expression{
 	protected Expression exp;
 	protected Symbole symbole;
 
-	protected Affectation(int n, Expression e, String a) {
+	public Affectation(int n, Expression e, String a) {
 		super(n);
 		acces = a;
 		exp = e;

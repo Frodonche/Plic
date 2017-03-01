@@ -7,7 +7,7 @@ import plic.arbre.ArbreAbstrait;
 public class ListeInstructions extends ArbreAbstrait {
 	ArrayList<ArbreAbstrait> listeArbresAbstraits;
 	
-	protected ListeInstructions(int no) {
+	public ListeInstructions(int no) {
 		super(no);
 		listeArbresAbstraits = new ArrayList<ArbreAbstrait>();
 	}

@@ -75,9 +75,10 @@ terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE, STAT, TYP 
    
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, SYSTEME, LISTEDECLARATION, DECLARATION, DECL_CHAMP, DECL_CONST, STATUT, TYPE, LISTEIDF, LISTEINSTRUCTION, INSTRUCTION;
-non terminal Expression EXPR, CSTE, CLASSE, ECRIRE, AFFECT, ACCES, COMMENTAIRE;
-
+non terminal ArbreAbstrait PROG, SYSTEME, LISTEDECLARATION, DECLARATION, DECL_CHAMP, DECL_CONST, LISTEINSTRUCTION, INSTRUCTION, ECRIRE, AFFECT, CLASSE;
+non terminal Expression EXPR, CSTE;
+non terminal String STATUT, TYPE, COMMENTAIRE, ACCES;
+non terminal ListeIDF LISTEIDF;
 
 precedence left INF, SUP ;
 precedence left EGALEGAL, DIFF;
@@ -190,11 +191,11 @@ LISTEIDF	::=	LISTEIDF:li IDF:i
 			{: ((ListeIDF) li).ajouter(i) ;
 			RESULT = li ;
 			:}
-			|	IDF
+			|	IDF:i
 			{:  
-			ArbreAbstrait li = new ListeIDF(0) ;
+			ListeIDF li = new ListeIDF() ;
 			
-			((ListeIDF) li).ajouter(i) ;
+			li.ajouter(i) ;
 			RESULT = li ;
 			:}
 			;
@@ -215,7 +216,7 @@ LISTEINSTRUCTION	::=	LISTEINSTRUCTION:li INSTRUCTION:i
 					{: ((ListeInstructions) li).ajouter(i) ;
 					RESULT = li ;
 					:}
-					|	INSTRUCTION
+					|	INSTRUCTION:i
 					{:  
 					ArbreAbstrait li = new ListeInstructions(0) ;
 			
@@ -240,6 +241,8 @@ ACCES		::= IDF:i
 			
 ECRIRE		::= WRITE CONSTANTECHAINE:c POINTVIRGULE
 			 {: RESULT = new Ecrire(cleft+1, c); :}
+			 | WRITE EXPR:e POINTVIRGULE;
+			 {: RESULT = new EcrireExpression(eleft+1, e); :}
 			;
 			
 COMMENTAIRE	::= DOUBLESLASH CONSTANTECHAINE

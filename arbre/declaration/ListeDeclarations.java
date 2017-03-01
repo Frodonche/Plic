@@ -13,7 +13,7 @@ import plic.arbre.ArbreAbstrait;
 public class ListeDeclarations extends ArbreAbstrait {
 	ArrayList<ArbreAbstrait> listeArbresAbstraits;
 	
-    protected ListeDeclarations(int n) {
+    public ListeDeclarations(int n) {
         super(n) ;
         listeArbresAbstraits = new ArrayList<ArbreAbstrait>();
     }
@@ -35,5 +35,11 @@ public class ListeDeclarations extends ArbreAbstrait {
 		}
 		return s.toString();
 	}
+
+	public ArrayList<ArbreAbstrait> getListeArbresAbstraits() {
+		return listeArbresAbstraits;
+	}
+	
+	
 
 }

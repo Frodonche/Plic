@@ -9,9 +9,9 @@ import plic.Tds;
 public class DeclarationChamp extends ListeDeclarations {
 	protected int status;
 	protected int type;
-	protected ArrayList<String> listeDeclarations;
+	protected ListeIDF listeIDF;
 
-	protected DeclarationChamp(int n, String s, String t, ArrayList<String> li) {
+	public DeclarationChamp(int n, String s, String t, ListeIDF li) {
 		super(n);
 		if (s == "public"){
 			status = 0;
@@ -22,8 +22,8 @@ public class DeclarationChamp extends ListeDeclarations {
 		if (t == "entier"){
 			type = 0;
 		}
-		listeDeclarations = li;
-		for(String idf : listeDeclarations){
+		listeIDF = li;
+		for(String idf : listeIDF.getListeIDF()){
 			Tds.getInstance().ajouter(new Entree(idf), new Symbole(status, type, Tds.getInstance().getTailleZoneDesVariables()*(-4)));
 		}
 	}

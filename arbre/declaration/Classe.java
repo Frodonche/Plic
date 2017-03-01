@@ -9,13 +9,13 @@ public class Classe extends ArbreAbstrait {
 	protected ListeDeclarations listeDeclarations;
 
 	
-	protected Classe(int no, String i, ListeDeclarations ld) {
+	public Classe(int no, String i, ArbreAbstrait ld) {
 		super(no);
 		idf = i;
-		listeDeclarations = ld;
+		listeDeclarations = (ListeDeclarations) ld;
 	}
 	
-	protected Classe(int no, String i) {
+	public Classe(int no, String i) {
 		super(no);
 		idf = i;
 		listeDeclarations = new ListeDeclarations(no);
