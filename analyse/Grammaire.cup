@@ -3,7 +3,9 @@ package plic.analyse ;
 import java.util.*;
 import plic.arbre.* ;
 import plic.arbre.expression.* ;
-import plic.exceptions.AnalyseSyntaxiqueException;
+import plic.arbre.declaration.* ;
+import plic.exceptions.*;
+import plic.*;
 
 import java_cup.runtime.*;
 
@@ -152,8 +154,10 @@ SYSTEME  ::=     CLASSE:c
 				{: RESULT = c; :}
 		;
 
-CLASSE   ::=     CLASS:c IDF:i LISTEDECLARATION:d FIN:f
-			|	CLASS IDF FIN
+CLASSE   ::=     CLASS:c IDF:i LISTEDECLARATION:d FIN
+			{: RESULT = new Classe(cleft+1, i, d) ; :}
+			|	CLASS:c IDF:i FIN
+			{: RESULT = new Classe(cleft+1, i) ; :}
 			;
 
 LISTEDECLARATION	::=	LISTEDECLARATION:ld DECLARATION:d
@@ -167,7 +171,7 @@ LISTEDECLARATION	::=	LISTEDECLARATION:ld DECLARATION:d
 			
 			((ListeDeclarations) ld).ajouter(d) ;
 			RESULT = ld ;
-		:}
+					:}
 					;
 					
 DECLARATION  ::= DECL_CHAMP:ch POINTVIRGULE
@@ -179,7 +183,7 @@ DECLARATION  ::= DECL_CHAMP:ch POINTVIRGULE
 			;
 			
 DECL_CHAMP ::= STATUT:s TYPE:t LISTEIDF:li
-			{: RESULT = new DeclarationChamp(0, s, t, li):}
+			{: RESULT = new DeclarationChamp(0, s, t, li) ; :}
 			;
 
 LISTEIDF	::=	LISTEIDF:li IDF:i
@@ -234,9 +238,7 @@ ACCES		::= IDF:i
 			{: RESULT = i ; :}
 			;
 			
-ECRIRE		::= WRITE EXPR:e POINTVIRGULE
-			{: RESULT = new Ecrire(eleft+1, e.toString()); :}
-			|	WRITE CONSTANTECHAINE POINTVIRGULE
+ECRIRE		::= WRITE CONSTANTECHAINE:c POINTVIRGULE
 			 {: RESULT = new Ecrire(cleft+1, c); :}
 			;
 			

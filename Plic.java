@@ -31,6 +31,8 @@ public class Plic {
             /* Recuperation du code MIPS */
             StringBuilder codeMIPS = new StringBuilder();
             
+            codeMIPS.append("move $s7, $sp \n");
+            codeMIPS.append("addi $sp, $sp, "+ (Tds.getInstance().getTailleZoneDesVariables()*(-4))+"\n");
             codeMIPS.append("main :\n");
             codeMIPS.append(arbre.toMIPS());
             codeMIPS.append("\nend :\n");
