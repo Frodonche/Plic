@@ -36,7 +36,7 @@ typ = "entier"
 
 /*plic1*/
 
-csteChaine = [-+*/ \t\n\x0B\f\r_A-Za-z0-9]*
+csteChaine = [-+*/ \t\n\x0B\f\r_A-Za-z0-9]+
 idf = [A-Za-z][_A-Za-z0-9]*
 
 /*fin plic1*/
@@ -44,9 +44,9 @@ idf = [A-Za-z][_A-Za-z0-9]*
 
 finDeLigne = \r|\n
 espace = {finDeLigne}  | [ \t\f]
+commentaire = [/][/].*
 
 %%
-"//"                { return symbol(CodesLexicaux.DOUBLESLASH); }
 
 "+"                	{ return symbol(CodesLexicaux.PLUS); }
 "-"                	{ return symbol(CodesLexicaux.MOINS); }
@@ -68,6 +68,9 @@ espace = {finDeLigne}  | [ \t\f]
 {csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext()); }
 {csteB}      	        { return symbol(CodesLexicaux.CONSTANTEBOOL, yytext()); }
 
+
+
+
 /*plic1*/
 
 ";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -85,5 +88,6 @@ espace = {finDeLigne}  | [ \t\f]
 /*fin plic1*/
 
 {espace}                { }
+{commentaire}			{ }
 
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }

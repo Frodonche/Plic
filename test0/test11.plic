@@ -1,0 +1,22 @@
+classe Essai
+        // La seule et unique classe de Plic1
+        b = a + 25 ;
+        publique entier a, b ;
+        a = 0 ;
+        privee entier c1, d2, de ;
+        privee entier A, plicVar3 ;
+        ecrire "programme de test\n" ;  ecrire "\n\n" ;
+        ecrire a ; ecrire "\n" ; ecrire b ; ecrire "\n" ;
+        // je calcule des // "expressions" arithmetiques
+        A =12 ; A = 88 + A ;
+        c1 = (a+10) * 12 * (-1) ; f = 5 ;
+        d2 = (a*3 - 3 + c1*f) ;         plicVar3 = c1 ;
+        ecrire A ; ecrire"\n" ; ecrire c1 ; ecrire"\n" ; ecrire f ; ecrire"\n" ; ecrire d2 ; ecrire"\n" ; ecrire plicVar3 ; ecrire"\n" ;
+        ecrire "ecriture d'un mot entre guillemets ""bonjour""" ; ecrire "\n" ;
+       // je calcule des //  "expressions" arithmetiques et logiques
+       ecrire "le resultat doit etre vrai : " ;
+       ecrire (5 < 8) et vrai ; ecrire "\n" ;
+       ecrire "le resultat doit etre faux : " ;
+       ecrire non(12-6 == 6) ou non (25*2 < 100) ;
+  publique entier f ;
+ fin

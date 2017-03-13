@@ -31,6 +31,18 @@ parser code {:
         lesTerminaux.put(new Integer(CodesLexicaux.ET), "et") ;
         lesTerminaux.put(new Integer(CodesLexicaux.OU), "ou") ;
         lesTerminaux.put(new Integer(CodesLexicaux.NON), "non") ;
+        
+        lesTerminaux.put(new Integer(CodesLexicaux.POINTVIRGULE), ";");
+        lesTerminaux.put(new Integer(CodesLexicaux.WRITE), "ecrire");
+        lesTerminaux.put(new Integer(CodesLexicaux.CLASS), "classe");
+        lesTerminaux.put(new Integer(CodesLexicaux.FIN), "fin");
+        lesTerminaux.put(new Integer(CodesLexicaux.EGAL), "=");
+        lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTEINT), "entier");
+        lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTEBOOL), "booleen");
+        lesTerminaux.put(new Integer(CodesLexicaux.IDF), ";"); 						// POUR IDF(Pas fini)
+        //lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTECHAINE), "chaine");
+        lesTerminaux.put(new Integer(CodesLexicaux.STAT), ";");						// POUR STAT(Pas fini)
+        lesTerminaux.put(new Integer(CodesLexicaux.TYP), ";");						// POUR TYP(Pas fini)
 
         StringBuffer m = new StringBuffer() ;
 
@@ -70,14 +82,14 @@ parser code {:
 
 terminal Symbole    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
 terminal Symbole    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal Symbole    POINTVIRGULE, WRITE, CLASS, FIN, EGAL, DOUBLESLASH ;
+terminal Symbole    POINTVIRGULE, WRITE, CLASS, FIN, EGAL;
 terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE, STAT, TYP ;
    
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG, SYSTEME, LISTEDECLARATION, DECLARATION, DECL_CHAMP, DECL_CONST, LISTEINSTRUCTION, INSTRUCTION, ECRIRE, AFFECT, CLASSE;
 non terminal Expression EXPR, CSTE;
-non terminal String STATUT, TYPE, COMMENTAIRE, ACCES;
+non terminal String STATUT, TYPE, ACCES;
 non terminal ListeIDF LISTEIDF;
 
 precedence left INF, SUP ;
@@ -91,7 +103,7 @@ precedence left CLASS;
 
 /* ----------------------------Grammar Section-------------------- */
  
-start with PROG ;
+start with SYSTEME ;
 
 PROG    ::=     EXPR:e 
                 {: BlocDInstructions arbre = new BlocDInstructions(eleft+1) ;
@@ -241,9 +253,6 @@ ACCES		::= IDF:i
 			
 ECRIRE		::= WRITE CONSTANTECHAINE:c POINTVIRGULE
 			 {: RESULT = new Ecrire(cleft+1, c); :}
-			 | WRITE EXPR:e POINTVIRGULE;
+			 | WRITE EXPR:e POINTVIRGULE
 			 {: RESULT = new EcrireExpression(eleft+1, e); :}
-			;
-			
-COMMENTAIRE	::= DOUBLESLASH CONSTANTECHAINE
 			;
