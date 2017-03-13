@@ -40,7 +40,7 @@ parser code {:
         lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTEINT), "entier");
         lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTEBOOL), "booleen");
         lesTerminaux.put(new Integer(CodesLexicaux.IDF), ";"); 						// POUR IDF(Pas fini)
-        //lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTECHAINE), "chaine");
+        lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTECHAINE), "chaine"); 	// faire en sorte de récupérer la chaine, et pas laisser "chaine"
         lesTerminaux.put(new Integer(CodesLexicaux.STAT), ";");						// POUR STAT(Pas fini)
         lesTerminaux.put(new Integer(CodesLexicaux.TYP), ";");						// POUR TYP(Pas fini)
 

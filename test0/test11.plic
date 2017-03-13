@@ -19,4 +19,4 @@ classe Essai
        ecrire "le resultat doit etre faux : " ;
        ecrire non(12-6 == 6) ou non (25*2 < 100) ;
   publique entier f ;
- fin
+fin
