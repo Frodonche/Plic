@@ -70,7 +70,6 @@ commentaire = [/][/].*
 
 
 
-
 /*plic1*/
 
 ";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }

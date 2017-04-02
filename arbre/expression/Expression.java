@@ -10,10 +10,15 @@ import plic.arbre.ArbreAbstrait;
 
 public abstract class Expression extends ArbreAbstrait {
 	
+	protected int ligne;
+	
     protected Expression(int n) {
         super(n) ;
+        this.ligne = n;
     }
     
-    public abstract int getType();
-
+    public abstract String getType();
+    public abstract int valeur();
+    
+    public int getLigne(){ return this.ligne; }
 }

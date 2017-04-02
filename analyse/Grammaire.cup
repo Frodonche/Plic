@@ -39,10 +39,13 @@ parser code {:
         lesTerminaux.put(new Integer(CodesLexicaux.EGAL), "=");
         lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTEINT), "entier");
         lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTEBOOL), "booleen");
-        lesTerminaux.put(new Integer(CodesLexicaux.IDF), ";"); 						// POUR IDF(Pas fini)
-        lesTerminaux.put(new Integer(CodesLexicaux.CONSTANTECHAINE), "chaine"); 	// faire en sorte de récupérer la chaine, et pas laisser "chaine"
-        lesTerminaux.put(new Integer(CodesLexicaux.STAT), ";");						// POUR STAT(Pas fini)
-        lesTerminaux.put(new Integer(CodesLexicaux.TYP), ";");						// POUR TYP(Pas fini)
+        lesTerminaux.put(new Integer(CodesLexicaux.STAT), "publique | privee");		
+        lesTerminaux.put(new Integer(CodesLexicaux.TYP), "entier | bool");
+
+		lesTerminaux.put(new Integer(CodesLexicaux.SI), "si") ;
+        lesTerminaux.put(new Integer(CodesLexicaux.ALORS), "alors") ;
+        lesTerminaux.put(new Integer(CodesLexicaux.SINON), "sinon") ;
+        lesTerminaux.put(new Integer(CodesLexicaux.FINSI), "fsi") ;
 
         StringBuffer m = new StringBuffer() ;
 
@@ -80,9 +83,10 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbole    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
-terminal Symbole    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal Symbole    POINTVIRGULE, WRITE, CLASS, FIN, EGAL;
+terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
+terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
+terminal Symbol	   SI, ALORS, SINON, FINSI;
+terminal Symbol    POINTVIRGULE, WRITE, CLASS, FIN, EGAL;
 terminal String    CONSTANTEINT, CONSTANTEBOOL, IDF, CONSTANTECHAINE, STAT, TYP ;
    
 /* Non terminals used in the grammar section.  */
@@ -91,6 +95,7 @@ non terminal ArbreAbstrait PROG, SYSTEME, LISTEDECLARATION, DECLARATION, DECL_CH
 non terminal Expression EXPR, CSTE;
 non terminal String STATUT, TYPE, ACCES;
 non terminal ListeIDF LISTEIDF;
+non terminal Conditionnelle CONDITION;
 
 precedence left INF, SUP ;
 precedence left EGALEGAL, DIFF;
@@ -241,6 +246,8 @@ INSTRUCTION	::= AFFECT:a
 			{:  RESULT = a ;  :}
 			|	ECRIRE:e
 			{:  RESULT = e ;  :}
+			| 	CONDITION:c
+			{:  RESULT = c ; :}
 			;
 			
 AFFECT		::=	ACCES:a EGAL EXPR:e POINTVIRGULE
@@ -256,3 +263,16 @@ ECRIRE		::= WRITE CONSTANTECHAINE:c POINTVIRGULE
 			 | WRITE EXPR:e POINTVIRGULE
 			 {: RESULT = new EcrireExpression(eleft+1, e); :}
 			;
+			
+CONDITION ::= SI EXPR:e ALORS LISTEDECLARATION:d SINON LISTEDECLARATION:sinon FINSI
+			  {:RESULT = new Conditionnelle(e, d, sinon); :}
+			  | SI EXPR:e ALORS LISTEDECLARATION:d FINSI
+			  {: RESULT = new Conditionnelle(e, d); :}
+			  | SI EXPR:e ALORS FINSI								
+			  {: RESULT = new Conditionnelle(e, null, null); :}
+			  | SI EXPR:e ALORS SINON LISTEDECLARATION:sinon FINSI		
+			  {: RESULT = new Conditionnelle(e, null, sinon); :}
+			  | SI EXPR:e ALORS LISTEDECLARATION:d SINON FINSI 			
+			  {: RESULT = new Conditionnelle(e, d, null); :}
+			  | SI EXPR:e ALORS SINON FINSI							
+			  {: RESULT = new Conditionnelle(e, null, null); :};

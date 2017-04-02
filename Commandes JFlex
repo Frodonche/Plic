@@ -55,3 +55,9 @@ Clic droit sur Plic -> Properties -> Java Build Path -> Libraries -> Add Externa
 
 ///////////////// Sur mon pc (Guillaume) ///////////////
 1-  java -jar C:/Users/guigu/Desktop/workspace/CompilJava/java-cup-11a.jar -parser AnalyseurSyntaxique -symbols CodesLexicaux Grammaire.cup
+
+2- java -jar C:/Users/guigu/Desktop/workspace/CompilJava/jflex-1.6.1.jar AnalyseurLexical.jflex
+
+3- java -cp C:/Users/guigu/Desktop/workspace/CompilJava/java-cup-11a.jar;. plic/analyse/*.java
+
+4- java -cp C:/Users/guigu/Desktop/workspace/CompilJava/java-cup-11a.jar;. plic.analyse.<FichierTestAnalyse> <fichier de test contenant le code à tester>

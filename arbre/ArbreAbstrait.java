@@ -12,6 +12,7 @@ public abstract class ArbreAbstrait {
     protected int noLigne ;
     public static final int ENTIER = 0;
     public static final int BOOL = 1;
+    public static int cptEtiquette = 0; 
     
     protected ArbreAbstrait(int no) {
         noLigne = no ;
@@ -22,6 +23,11 @@ public abstract class ArbreAbstrait {
     }
 
     public abstract void verifier() ; 
-    public abstract String toMIPS() ; 
+    public abstract String toMIPS() ;
+    
+    public void incCptEtiquette(){
+   		ArbreAbstrait.cptEtiquette++;
+   	}
+
 
 }

@@ -1,5 +1,7 @@
 package plic.arbre.expression;
 
+import plic.exceptions.AnalyseException;
+
 /**
  * 3 déc. 2015
  *
@@ -8,33 +10,48 @@ package plic.arbre.expression;
 
 public class ConstanteBool extends Constante {
     
+	protected int valeur;
+	
     public ConstanteBool(String texte, int n) {
         super(texte, n) ;
+        this.type = "bool";
+		if(texte.equals("vrai"))
+			this.valeur = 1;
+		else
+			this.valeur = 0;
     }
 
 	@Override
-	public void verifier() {
+	public void verifier() throws AnalyseException{
 
 		
 	}
 
 	@Override
 	public String toMIPS() {
-		StringBuilder sb = new StringBuilder("li $v0, ");
+		int tmp;
+		if(this.cste.equals("true"))
+			tmp = 1;
+		else
+			tmp = 0;
 		
-	    if (cste.equals("vrai")) {
-	    	sb.append("1");	    	
-	    }
-	    else {
-	    	sb.append("0");
-	    }
-	    
-		return sb.toString(); 
+		StringBuilder bool = new StringBuilder();
+		bool.append("	# Range "+ this.cste+ " ("+tmp+")" +" dans $v0 et l'empile\n"+
+						  "	li $v0, " + tmp + "\n" +
+						  "	sw $v0,($sp) \n" +
+						  "	add $sp ,$sp,-4 \n");
+		return bool.toString();	
 	}
 
 	@Override
-	public int getType() {
-		return BOOL;
+	public String getType() {
+		return "bool";
+	}
+
+	@Override
+	public int valeur() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

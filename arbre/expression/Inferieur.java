@@ -46,8 +46,17 @@ public class Inferieur extends Comparaison {
 	}
 
 	@Override
-	public int getType() {
-		return BOOL;
+	public String getType() {
+		return "bool";
+	}
+
+	@Override
+	public int valeur() {
+		boolean res = gauche.valeur() < droite.valeur();
+		if (res==true)
+			return 1;
+		else
+			return 0;
 	}
     
 }
