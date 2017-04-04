@@ -2,29 +2,22 @@ package plic.arbre.declaration;
 
 import java.util.ArrayList;
 
-import plic.Entree;
-import plic.Symbole;
-import plic.Tds;
+import plic.arbre.tds.EVariable;
+import plic.arbre.tds.Symbole;
+import plic.arbre.tds.Tds;
 
 public class DeclarationChamp extends ListeDeclarations {
-	protected int status;
-	protected int type;
+	protected String status;
+	protected String type;
 	protected ListeIDF listeIDF;
 
 	public DeclarationChamp(int n, String s, String t, ListeIDF li) {
 		super(n);
-		if (s == "public"){
-			status = 0;
-		} else if(s == "privee"){
-			status = 1;
-		}
-
-		if (t == "entier"){
-			type = 0;
-		}
+		status = s;
+		type = t;
 		listeIDF = li;
 		for(String idf : listeIDF.getListeIDF()){
-			Tds.getInstance().ajouter(new Entree(idf), new Symbole(status, type, Tds.getInstance().getTailleZoneDesVariables()*(-4)));
+			Tds.getInstance().ajouterChamp(new EVariable(idf), new Symbole(status, type, Tds.getInstance().getTailleZoneDesVariables()*(-4)));
 		}
 	}
 

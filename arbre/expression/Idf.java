@@ -1,8 +1,8 @@
 package plic.arbre.expression;
 
-import plic.Entree;
-import plic.Symbole;
-import plic.Tds;
+import plic.arbre.tds.EVariable;
+import plic.arbre.tds.Symbole;
+import plic.arbre.tds.Tds;
 import plic.exceptions.AnalyseSemantiqueException;
 
 public class Idf extends Expression {
@@ -16,13 +16,13 @@ public class Idf extends Expression {
 	}
 
 	@Override
-	public int getType() {
+	public String getType() {
 		return symbole.getType();
 	}
 
 	@Override
 	public void verifier() {
-		symbole = Tds.getInstance().identifier(new Entree(nom));
+		symbole = Tds.getInstance().identifier(new EVariable(nom));
 		if (symbole == null) {
 			throw new AnalyseSemantiqueException("La variable " + nom + " n'a pas ete declaree");
 		}
@@ -36,5 +36,10 @@ public class Idf extends Expression {
 	public String toString() {
         return nom;
     }
+
+	@Override
+	public int valeur() {
+		return symbole.getValeur();
+	}
 
 }

@@ -21,7 +21,7 @@ public class Superieur extends Comparaison {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if (gauche.getType() != ENTIER || droite.getType() != ENTIER) {
+		if (gauche.getType() != "entier" || droite.getType() != "entier") {
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 		
@@ -46,8 +46,16 @@ public class Superieur extends Comparaison {
 	}
 
 	@Override
-	public int getType() {
-		return BOOL;
+	public String getType() {
+		return "bool";
+	}
+
+	@Override
+	public int valeur() {
+		if(gauche.valeur() > droite.valeur())
+			return 1;
+		else
+			return 0;
 	}
     
 }

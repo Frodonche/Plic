@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import plic.analyse.AnalyseurLexical;
 import plic.analyse.AnalyseurSyntaxique;
 import plic.arbre.ArbreAbstrait;
+import plic.arbre.tds.Tds;
 import plic.exceptions.AnalyseException;
 
 /**

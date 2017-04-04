@@ -21,7 +21,7 @@ public class EtLogique extends BinaireLogique {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if (gauche.getType() != BOOL || droite.getType() != BOOL) {
+		if (gauche.getType() != "bool" || droite.getType() != "bool") {
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 		
@@ -46,8 +46,13 @@ public class EtLogique extends BinaireLogique {
 	}
 
 	@Override
-	public int getType() {
-		return BOOL;
+	public String getType() {
+		return "bool";
+	}
+
+	@Override
+	public int valeur() {
+		return gauche.valeur() * droite.valeur();
 	}
 
 }

@@ -2,6 +2,7 @@ package plic.arbre.expression;
 
 import plic.exceptions.AnalyseException;
 import plic.exceptions.AnalyseSemantiqueException;
+import plic.exceptions.DivisionParZeroException;
 
 /**
  * 3 déc. 2015
@@ -22,7 +23,7 @@ public class Div extends BinaireArithmetique {
 
 	@Override
 	public void verifier() throws AnalyseException {
-		if (gauche.getType() != ENTIER || droite.getType() != ENTIER){
+		if (gauche.getType() != "entier" || droite.getType() != "entier"){
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 	}
@@ -46,8 +47,17 @@ public class Div extends BinaireArithmetique {
 	}
 
 	@Override
-	public int getType() {
-		return ENTIER;
+	public String getType() {
+		return "entier";
+	}
+
+	@Override
+	public int valeur() {
+		if (droite.valeur() != 0){
+    		return  (gauche.valeur() / droite.valeur());
+    	}
+		else
+    		throw new DivisionParZeroException(ligne);
 	}
     
 }

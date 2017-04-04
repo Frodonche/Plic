@@ -21,7 +21,7 @@ public class Inferieur extends Comparaison {
 
 	@Override
 	public void verifier() throws AnalyseSemantiqueException {
-		if (gauche.getType() != ENTIER || droite.getType() != ENTIER) {
+		if (gauche.getType() != "entier" || droite.getType() != "entier") {
 			throw new AnalyseSemantiqueException("erreur de type : " + gauche.getType() + " & " + droite.getType());
 		}
 		

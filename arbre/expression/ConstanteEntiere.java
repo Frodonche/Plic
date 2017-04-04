@@ -7,9 +7,11 @@ package plic.arbre.expression;
  */
 
 public class ConstanteEntiere extends Constante {
-    
+    protected int nombre;
+	
     public ConstanteEntiere(String texte, int n) {
         super(texte, n) ;
+        this.nombre = Integer.parseInt(texte);
     }
 
 	@Override
@@ -22,8 +24,14 @@ public class ConstanteEntiere extends Constante {
 		return "li $v0, " + cste;
 	}
 
-	public int getType() {
-		return ENTIER;
+	public String getType() {
+		return "entier";
+	}
+
+	@Override
+	public int valeur() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

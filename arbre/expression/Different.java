@@ -49,8 +49,16 @@ public class Different extends Comparaison {
 	}
 
 	@Override
-	public int getType() {
-		return BOOL;
+	public String getType() {
+		return "bool";
+	}
+
+	@Override
+	public int valeur() {
+		if(gauche.valeur() != droite.valeur())
+			return 1;
+		else
+			return 0;
 	}
   
 }

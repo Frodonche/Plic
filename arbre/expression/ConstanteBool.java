@@ -14,7 +14,6 @@ public class ConstanteBool extends Constante {
 	
     public ConstanteBool(String texte, int n) {
         super(texte, n) ;
-        this.type = "bool";
 		if(texte.equals("vrai"))
 			this.valeur = 1;
 		else
